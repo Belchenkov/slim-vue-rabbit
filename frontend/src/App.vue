@@ -29,7 +29,9 @@
 </script>
 
 <style lang="scss">
-  @import "~bootstrap/dist/css/bootstrap.css";
+  @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&display=swap');
+  @import "assets/scss/variables";
+  @import "~bootstrap/scss/bootstrap";
   @import "~bootstrap-vue/dist/bootstrap-vue.css";
   @import "~@fortawesome/fontawesome-free/css/all.css";
 

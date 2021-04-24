@@ -1,1 +1,1 @@
-# Slim + Vue.js + RabbitMQ
+# SlimPHP + Vue.js + RabbitMQ

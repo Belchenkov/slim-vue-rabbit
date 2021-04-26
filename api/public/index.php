@@ -2,9 +2,15 @@
 
 declare(strict_types=1);
 
-header('Content-Type: application/json');
+use Api\Http\Action\HomeAction;
 
-echo json_encode([
-    'name' => 'App API',
-    'version' => '1.0.0'
-], JSON_THROW_ON_ERROR);
+chdir(dirname(__DIR__));
+require 'vendor/autoload.php';
+
+$config = require 'config/config.php';
+
+$app = new \Slim\App($config);
+
+$app->get('/', HomeAction::class . ':handle');
+
+$app->run();

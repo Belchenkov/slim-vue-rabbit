@@ -3,13 +3,18 @@
 declare(strict_types=1);
 
 use Api\Http\Action\HomeAction;
+use Symfony\Component\Dotenv\Dotenv;
 
 chdir(dirname(__DIR__));
 require 'vendor/autoload.php';
 
-$config = require 'config/config.php';
+if (file_exists('.env')) {
+    (new Dotenv())->load('.env');
+}
 
-$app = new \Slim\App($config);
+$config = require 'config/config.php';
+$container = new \Slim\Container($config);
+$app = new \Slim\App($container);
 
 $app->get('/', HomeAction::class . ':handle');
 

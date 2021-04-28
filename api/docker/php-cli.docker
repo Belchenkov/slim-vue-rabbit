@@ -6,4 +6,4 @@ RUN apt-get update && apt-get install -y libmcrypt-dev zlib1g-dev libpq-dev wget
 
 RUN wget https://getcomposer.org/installer -O - -q | php -- --install-dir=/bin --filename=composer --quiet
 
-WORKDIR /var/www/api
+WORKDIR /var/www

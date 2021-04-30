@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Api\Model\User\Service;
 
-use Api\Model\User\Entiry\User\ConfirmToken;
+use Api\Model\User\Entity\User\ConfirmToken;
 
 interface ConfirmTokenizer
 {

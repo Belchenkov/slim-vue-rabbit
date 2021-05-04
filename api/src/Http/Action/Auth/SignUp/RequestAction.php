@@ -25,7 +25,7 @@ class RequestAction
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $body = json_decode($request->getBody()->getContents(), true);
+        $body = $request->getParsedBody();
 
         $command = new Command();
 

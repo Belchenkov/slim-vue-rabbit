@@ -10,7 +10,8 @@ use Psr\Container\ContainerInterface;
 return [
     Api\Model\Flusher::class => function (ContainerInterface $container) {
         return new Api\Infrastructure\Model\Service\DoctrineFlusher(
-            $container->get(EntityManagerInterface::class)
+            $container->get(EntityManagerInterface::class),
+            $container->get(Api\Model\EventDispatcher::class)
         );
     },
 
@@ -32,8 +33,7 @@ return [
     UserModel\UseCase\SignUp\Confirm\Handler::class => function (ContainerInterface $container) {
         return new UserModel\UseCase\SignUp\Confirm\Handler(
             $container->get(UserModel\Entity\User\UserRepository::class),
-            $container->get(Api\Model\Flusher::class),
-            $container->get(Api\Model\EventDispatcher::class)
+            $container->get(Api\Model\Flusher::class)
         );
     },
 
@@ -42,8 +42,7 @@ return [
             $container->get(UserModel\Entity\User\UserRepository::class),
             $container->get(UserModel\Service\PasswordHasher::class),
             $container->get(UserModel\Service\ConfirmTokenizer::class),
-            $container->get(Api\Model\Flusher::class),
-            $container->get(Api\Model\EventDispatcher::class)
+            $container->get(Api\Model\Flusher::class)
         );
     },
 

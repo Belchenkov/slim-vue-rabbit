@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62f0453ce6632d2e76faaf8918508791",
+    "content-hash": "6e24ecca5e8a6403b82d36bfd13a5211",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -1267,6 +1267,53 @@
                 "source": "https://github.com/php-fig/http-message-util/tree/1.1.5"
             },
             "time": "2020-11-24T22:02:12+00:00"
+        },
+        {
+            "name": "geekdevs/swift-mailer-extensions",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/geekdevs/swift-mailer-extensions.git",
+                "reference": "9ed7dbc3602df5493cb14c983058886bc53c1f79"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/geekdevs/swift-mailer-extensions/zipball/9ed7dbc3602df5493cb14c983058886bc53c1f79",
+                "reference": "9ed7dbc3602df5493cb14c983058886bc53c1f79",
+                "shasum": ""
+            },
+            "require": {
+                "swiftmailer/swiftmailer": "~6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Geekdevs\\SwiftMailer\\": "src/SwiftMailer"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pavel Dubinin",
+                    "email": "geekdevs@gmail.com"
+                }
+            ],
+            "description": "SwiftMailer extensions",
+            "keywords": [
+                "eml",
+                "extension",
+                "file",
+                "mailer",
+                "swift"
+            ],
+            "support": {
+                "issues": "https://github.com/geekdevs/swift-mailer-extensions/issues",
+                "source": "https://github.com/geekdevs/swift-mailer-extensions/tree/2.0.1"
+            },
+            "time": "2020-02-04T07:58:06+00:00"
         },
         {
             "name": "monolog/monolog",

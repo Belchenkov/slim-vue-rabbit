@@ -8,15 +8,18 @@ use Api\Model\User\UseCase\SignUp\Confirm\Command;
 use Api\Model\User\UseCase\SignUp\Confirm\Handler;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Zend\Diactoros\Response\JsonResponse;
 
 class ConfirmAction
 {
     private $handler;
+    private $validator;
 
-    public function __construct(Handler $handler)
+    public function __construct(Handler $handler, ValidatorInterface $validator)
     {
         $this->handler = $handler;
+        $this->validator = $validator;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
@@ -27,6 +30,15 @@ class ConfirmAction
 
         $command->email = $body['email'] ?? '';
         $command->token = $body['token'] ?? '';
+
+        $violations = $this->validator->validate($command);
+        if ($violations->count() > 0) {
+            $errors = [];
+            foreach ($violations as $violation) {
+                $errors[$violation->getPropertyPath()] = $violation->getMessage();
+            }
+            return new JsonResponse(['errors' => $errors], 400);
+        }
 
         $this->handler->handle($command);
 

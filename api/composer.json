@@ -14,7 +14,8 @@
     "symfony/console": "^4.1",
     "symfony/dotenv": "^4.1",
     "zendframework/zend-config-aggregator": "^1.1",
-    "zendframework/zend-diactoros": "^2.0"
+    "zendframework/zend-diactoros": "^2.0",
+    "symfony/validator": "^4.1"
   },
   "require-dev": {
     "doctrine/data-fixtures": "^1.3",

@@ -4,3 +4,5 @@
 !log
 !log/.gitkeep
 !.gitignore
+!mail
+!mail/.gitkeep

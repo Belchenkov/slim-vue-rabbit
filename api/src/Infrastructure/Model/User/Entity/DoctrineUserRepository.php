@@ -9,11 +9,12 @@ use Api\Model\User\Entity\User\Email;
 use Api\Model\User\Entity\User\User;
 use Api\Model\User\Entity\User\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
 
 class DoctrineUserRepository implements UserRepository
 {
     /**
-     * @var \Doctrine\ORM\EntityRepository
+     * @var EntityRepository
      */
     private $repo;
     private $em;

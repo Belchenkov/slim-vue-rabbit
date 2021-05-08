@@ -26,6 +26,13 @@ class UserBuilder
         $this->confirmToken = new ConfirmToken('token', new \DateTimeImmutable('+1 day'));
     }
 
+    public function withPasswordHash(string $hash): self
+    {
+        $clone = clone $this;
+        $clone->hash = $hash;
+        return $clone;
+    }
+
     public function withId(UserId $id): self
     {
         $clone = clone $this;

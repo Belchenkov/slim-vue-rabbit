@@ -8,6 +8,7 @@ use Api\Model;
 use Api\Http\Middleware;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -46,6 +47,12 @@ return array(
         return new Action\Auth\SignUp\ConfirmAction(
             $container->get(Model\User\UseCase\SignUp\Confirm\Handler::class),
             $container->get(Validator::class)
+        );
+    },
+    Action\Auth\OAuthAction::class => function (ContainerInterface $container) {
+        return new Action\Auth\OAuthAction(
+            $container->get(\League\OAuth2\Server\AuthorizationServer::class),
+            $container->get(LoggerInterface::class)
         );
     },
 );

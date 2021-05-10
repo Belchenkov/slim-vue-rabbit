@@ -30,3 +30,36 @@ services:
       dockerfile: php-fpm.docker
     volumes:
     - ./api:/var/www/api
+    depends_on:
+      - api-postgres
+      - mailer
+
+  api-php-cli:
+    build:
+      context: ./api/docker
+      dockerfile: php-cli.docker
+    volumes:
+    - ./api:/var/www/api
+    working_dir: /var/www/api
+    depends_on:
+      - api-postgres
+      - mailer
+    tty: true
+
+  api-postgres:
+    image: postgres:9.6-alpine
+    volumes:
+      - ./api/var/docker/postgres:/var/lib/postgresql/data
+    environment:
+      - "POSTGRES_USER=api"
+      - "POSTGRES_PASSWORD=secret"
+      - "POSTGRES_DB=api"
+    ports:
+      - "54321:5432"
+
+  mailer:
+    image: mailhog/mailhog
+    restart: unless-stopped
+    ports:
+      - "1025:1025"
+      - "8082:8025"

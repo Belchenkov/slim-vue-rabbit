@@ -49,6 +49,8 @@ return [
                 Type\User\EmailType::NAME => Type\User\EmailType::class,
                 Type\OAuth\ClientType::NAME => Type\OAuth\ClientType::class,
                 Type\OAuth\ScopesType::NAME => Type\OAuth\ScopesType::class,
+                Type\Video\AuthorIdType::NAME => Type\Video\AuthorIdType::class,
+                Type\Video\VideoIdType::NAME => Type\Video\VideoIdType::class,
             ],
         ],
     ],

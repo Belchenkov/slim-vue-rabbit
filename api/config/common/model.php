@@ -54,8 +54,21 @@ return [
         );
     },
 
+    VideoModel\UseCase\Author\Create\Handler::class => function (ContainerInterface $container) {
+        return new VideoModel\UseCase\Author\Create\Handler(
+            $container->get(VideoModel\Entity\Author\AuthorRepository::class),
+            $container->get(Api\Model\Flusher::class)
+        );
+    },
+
     ReadModel\Video\AuthorReadRepository::class => function (ContainerInterface $container) {
         return new Infrastructure\ReadModel\Video\DoctrineAuthorReadRepository(
+            $container->get(\Doctrine\ORM\EntityManagerInterface::class)
+        );
+    },
+
+    VideoModel\Entity\Author\AuthorRepository::class => function (ContainerInterface $container) {
+        return new VideoInfrastructure\Entity\DoctrineAuthorRepository(
             $container->get(\Doctrine\ORM\EntityManagerInterface::class)
         );
     },

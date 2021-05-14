@@ -47,8 +47,15 @@ return [
             $container->get(Api\Model\Flusher::class)
         );
     },
+
     ReadModel\User\UserReadRepository::class => function (ContainerInterface $container) {
         return new Infrastructure\ReadModel\User\DoctrineUserReadRepository(
+            $container->get(\Doctrine\ORM\EntityManagerInterface::class)
+        );
+    },
+
+    ReadModel\Video\AuthorReadRepository::class => function (ContainerInterface $container) {
+        return new Infrastructure\ReadModel\Video\DoctrineAuthorReadRepository(
             $container->get(\Doctrine\ORM\EntityManagerInterface::class)
         );
     },

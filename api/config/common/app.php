@@ -61,4 +61,9 @@ return array(
             $container->get(ReadModel\User\UserReadRepository::class)
         );
     },
+    Action\Author\ShowAction::class => function (ContainerInterface $container) {
+        return new Action\Author\ShowAction(
+            $container->get(ReadModel\Video\AuthorReadRepository::class)
+        );
+    },
 );

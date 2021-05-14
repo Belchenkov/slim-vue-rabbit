@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
+use Api\Infrastructure;
 use Api\Infrastructure\Model\User as UserInfrastructure;
 use Api\Model\User as UserModel;
+use Api\ReadModel;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Container\ContainerInterface;
 
@@ -45,7 +47,11 @@ return [
             $container->get(Api\Model\Flusher::class)
         );
     },
-
+    ReadModel\User\UserReadRepository::class => function (ContainerInterface $container) {
+        return new Infrastructure\ReadModel\User\DoctrineUserReadRepository(
+            $container->get(\Doctrine\ORM\EntityManagerInterface::class)
+        );
+    },
 
     'config' => [
         'auth' => [

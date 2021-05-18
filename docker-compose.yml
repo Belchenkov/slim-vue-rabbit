@@ -33,6 +33,7 @@ services:
     depends_on:
       - api-postgres
       - mailer
+      - kafka
 
   api-php-cli:
     build:
@@ -44,6 +45,7 @@ services:
     depends_on:
       - api-postgres
       - mailer
+      - kafka
     tty: true
 
   api-postgres:
@@ -56,6 +58,22 @@ services:
       - "POSTGRES_DB=api"
     ports:
       - "54321:5432"
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_CREATE_TOPICS: notifications:1:1
+      KAFKA_LISTENERS: PLAINTEXT://kafka:9092
 
   mailer:
     image: mailhog/mailhog

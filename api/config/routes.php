@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Api\Http\Action\Auth\SignUp\ConfirmAction;
 use Api\Http\Action\Auth\SignUp\RequestAction;
+use Api\Http\Action\Author\CreateAction;
+use Api\Http\Action\Author\ShowAction;
 use Api\Http\Action\HomeAction;
 use League\OAuth2\Server\Middleware\ResourceServerMiddleware;
 use Slim\App;
@@ -26,5 +28,10 @@ return function (App $app, ContainerInterface $container) {
 
     $app->group('/profile', function () {
         $this->get('', Action\Profile\ShowAction::class . ':handle');
+    })->add($auth);
+
+    $app->group('/author', function () {
+        $this->get('', ShowAction::class . ':handle');
+        $this->post('/create', CreateAction::class . ':handle');
     })->add($auth);
 };

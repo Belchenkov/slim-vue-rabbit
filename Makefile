@@ -1,12 +1,16 @@
 up: docker-up
+restart: docker-clear docker-up
 
-init: docker-clear docker-up api-permissions api-env api-composer api-genrsa api-migration api-fixtures frontend-env frontend-install frontend-build storage-permissions
+init: docker-clear docker-up api-permissions api-env api-composer api-genrsa pause api-migration api-fixtures frontend-env frontend-install frontend-build storage-permissions
 
 docker-clear:
 	docker-compose down --remove-orphans
 
 docker-up:
 	docker-compose up --build -d
+
+pause:
+	sleep 5
 
 api-permissions:
 	sudo chmod 777 api/var

@@ -19,6 +19,7 @@
     "swiftmailer/swiftmailer": "^6.1",
     "zendframework/zend-diactoros": "^2.0",
     "monolog/monolog": "^1.23",
+    "nmred/kafka-php": "v0.2.0.8",
     "symfony/validator": "^4.1"
   },
   "require-dev": {
